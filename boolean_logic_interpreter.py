@@ -30,34 +30,12 @@ def func_not(a):
         return "False"
 
 
-# mult_func = multiply(1, 0)
-# not_func = func_not("1")
-# print(mult_func)
-# print(not_func)
-
-
-# print(boolean_operators["∨"])
-# s = "(T∨F)"
-# s = list(s)
-# print(s)
-#
-# # check if string contains brackets
-# for value in s:
-#     if value == "(":
-#         print(s[s.index("(") + 1:s.index(")")])
-#         if value == "∨":
-#             add()
-
-
-# if it contains brackets evaluate by checking whether the not operation appears,
-# division or whether the variables are products and perform operations
-
-
 def evaluate(s):
     boolean_operators = {"∨": add, "∧": multiply, "¬": func_not}
     boolean_variables = {"T": 1, "F": 0}
     arguments = []
-    s =s.split(" ")
+    s = s.replace(" ", '')
+    s = list(s)
     for value in s:
         if value in boolean_variables:
             arguments.append(boolean_variables[value])
@@ -131,3 +109,47 @@ class EvaluationTest(unittest.TestCase):
         expected = "False"
         self.assertEqual(actual, expected)
 
+    def test_or_false_true_evaluation(self):
+        actual = evaluate("F ∨ T")
+        expected = "True"
+        self.assertEqual(actual, expected)
+
+    def test_or_true_false_evaluation(self):
+        actual = evaluate("T ∨ F")
+        expected = "True"
+        self.assertEqual(actual, expected)
+
+    def test_or_true_true_evaluation(self):
+        actual = evaluate("T ∨ T")
+        expected = "True"
+        self.assertEqual(actual, expected)
+
+    def test_and_false_false_evaluation(self):
+        actual = evaluate("F ∧ F")
+        expected = "False"
+        self.assertEqual(actual, expected)
+
+    def test_and_false_true_evaluation(self):
+        actual = evaluate("F ∧ T")
+        expected = "False"
+        self.assertEqual(actual, expected)
+
+    def test_and_true_false_evaluation(self):
+        actual = evaluate("T ∧ F")
+        expected = "False"
+        self.assertEqual(actual, expected)
+
+    def test_and_false_false_evaluation(self):
+        actual = evaluate("T ∧ T")
+        expected = "True"
+        self.assertEqual(actual, expected)
+
+    def test_not_evaluation_f(self):
+        actual = evaluate("¬T")
+        expected = "False"
+        self.assertEqual(actual, expected)
+
+    def test_not_evaluation_t(self):
+        actual = evaluate("¬F")
+        expected = "True"
+        self.assertEqual(actual, expected)
