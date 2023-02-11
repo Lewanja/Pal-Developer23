@@ -1,0 +1,10 @@
+{% extends "home.html" %}
+{% block body %}
+<body>
+        {% if result== "T" %}
+            Your result is True denoted by: <strong> {{ result }} </strong>
+        {% else %}
+            Your result is False denoted by : <strong> {{result }} </strong>
+        {% endif %}
+</body>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block body %}
+<body>
+    <form name="boolean logic" action="/post_logic" method="post">
+        <div class="col-12">
+        <label class="form-label"> boolean expression </label> <input type="text"  class="form-control" name="boolean_expression">
+
+        <label>Submit</label> <input type="submit" class="btn btn-primary">
+        </div>
+    </form>
+</body>
+{% endblock %}
