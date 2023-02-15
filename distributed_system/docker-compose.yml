@@ -1,0 +1,130 @@
+services:
+  server:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5099
+    container_name: server
+    command:
+      - python3
+      - server.py
+    ports:
+      - '5099:5099'
+    networks:
+      - local
+  client_1:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5001
+      SERVER_URL: http://server:5099
+    container_name: client_1_container
+    command:
+      - python3
+      - client.py
+    ports:
+      - '5001:5001'
+    networks:
+      - local
+    depends_on:
+      - server
+  client_2:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5002
+      SERVER_URL: http://server:5099
+    container_name: client_2_container
+    command:
+      - python3
+      - client.py
+    ports:
+      - '5002:5002'
+    networks:
+      - local
+    depends_on:
+      - server
+  client_3:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5003
+      SERVER_URL: http://server:5099
+    container_name: client_3_container
+    command:
+      - python3
+      - client.py
+    ports:
+      - '5003:5003'
+    networks:
+      - local
+    depends_on:
+      - server
+  client_4:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5004
+      SERVER_URL: http://server:5099
+    container_name: client_4_container
+    command:
+      - python3
+      - client.py
+    ports:
+      - '5004:5004'
+    networks:
+      - local
+    depends_on:
+      - server
+  client_5:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5005
+      SERVER_URL: http://server:5099
+    container_name: client_5_container
+    command:
+      - python3
+      - client.py
+    ports:
+      - '5005:5005'
+    networks:
+      - local
+    depends_on:
+      - server
+  client_6:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5006
+      SERVER_URL: http://server:5099
+    container_name: client_6_container
+    command:
+      - python3
+      - client.py
+    ports:
+      - '5006:5006'
+    networks:
+      - local
+    depends_on:
+      - server
+  client_7:
+    build: .
+    stop_signal: SIGINT
+    environment:
+      RUNNING_PORT: 5007
+      SERVER_URL: http://server:5099
+    container_name: client_7_container
+    command:
+      - python3
+      - client.py
+    ports:
+      - '5007:5007'
+    networks:
+      - local
+    depends_on:
+      - server
+
+networks:
+  local:
+    driver: bridge

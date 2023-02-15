@@ -33,7 +33,6 @@ Booleanlogic can also be used to check whether two strings are equal.Example: "T
 
  This program is a Boolean logic interpreter that can evaluate simple expressions, for example:
 
-
 **OR** 
 
 λ> T ∨ F
@@ -43,12 +42,11 @@ T
 The `or_operator` uses addition in the background . 
 
 True is assigned a value of 1 and False is assigned a value of 0. 
-T ∨ F. In the case of True or False, our mathematical expression is 1 + 0 which yields 1 which is True.
+T ∨ F. In the case of True or False, our mathematical expression is 1 + 0 which yields 1 which is True. In the case of F ∨ F, the result yields a 0. This is because 0 + 0 = 0 
 If we have multiple operators and the result of the computation is greater than one, the result is considered True.
 
 
 **AND**
-
 
 λ> T ∧ F
 
