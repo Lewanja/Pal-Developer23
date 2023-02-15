@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        Type your code below
+        The only allowed operators are listed below. 
+        You can copy either by manually highlighting and copying or by using the copy button next to the symbol
+    </div>
+
+    {% include 'boolean_logic_form.html' %}
+    <br>
+    {% include 'operators.html' %}
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+        {% if result == "T" %}
+            Your result is True denoted by: <strong> {{ result }} </strong>
+        {% elif result == "F" %}
+            Your result is False denoted by : <strong> {{result }} </strong>
+        {% elif error %}
+            We encountered an error processing your code : </br>{{error}}
+            <h4>Allowed symbols</h4>
+            {% include 'operators.html' %}
+        {% else %}
+            Evaluation failed. result : {{result}}. Error : {{error}}
+        {% endif %}
+
+    </br>
+    <a href="/"> Go back to home page</a>
+{% endblock %}
