@@ -1,7 +1,7 @@
 import unittest
 
 from boolean_logic_interpreter import and_operator, func_not, evaluate, or_operator, evaluate_with_brackets, equal_operator
-
+from variable_assignment import replace_value_in_string, process_var_assign, evaluate_variable_sub
 
 class BooleanTest(unittest.TestCase):
     def test_or_with_true_true(self):
@@ -132,3 +132,8 @@ class BracketsTest(unittest.TestCase):
         actual = evaluate_with_brackets("(T ∧ F) = F")
         expected = "T"
         self.assertEqual(actual, expected)
+
+class ReplaceValueInStringTest(unittest.TestCase):
+    def test_replace_value_in_string(self):
+        actual = replace_value_in_string("let X = F")
+        expected = pass
