@@ -55,7 +55,7 @@ def unassign_client_rank(client_ip):
     clients: List = get_client_list()
     clients.remove(client_ip)
     cache.set(CLIENT_LIST_CACHE_KEY, json.dumps(clients))
-    app.logger.info(pretty_print_ranks(clients))
+    app.logger.info("Clients list is + \n" +pretty_print_ranks(clients))
 
 
 def pretty_print_ranks(clients):

@@ -21,8 +21,16 @@ Run `docker ps` and get the ids of the containers
 In separate terminals run `docker logs -f {container id}`
 let the logs stream
 
+![Assigning Ranks](images/Assign%20rank%20request.JPG)
+
+![Send Command](images/Send%20command.JPG)
+
+![Unassigning Ranks](images/Unassign%20rank%20request.JPG)
+
 
 ### HOW IT WORKS
+![Flow of system](images/Distributed%20system%20diagram.jpg)
+
 #### RANKS
 The ranks are stored in cache by the server. Clients do not hold any information about ranks by themselves. The data structure used is a JSON list of strings made of ip and port of the client.
 
