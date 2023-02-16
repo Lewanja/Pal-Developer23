@@ -1,6 +1,14 @@
 <form name="boolean logic" action="/post_logic" method="post">
     <div class="col-12">
-    <textarea  class="form-control" name="boolean_expression" style="margin:5px"></textarea>
+    <textarea  class="form-control" id="code" name="boolean_expression" style="margin:5px"></textarea>
     <input type="submit" class="btn btn-primary" style="margin-top:5px">
     </div>
 </form>
+
+<script type="text/javascript">
+    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        lineNumbers: true,
+        mode: 'text/x-perl',
+        theme: 'abbott',
+    });
+</script>

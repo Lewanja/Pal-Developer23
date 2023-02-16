@@ -31,7 +31,11 @@ Booleanlogic can also be used to check whether two strings are equal.Example: "T
 
 ## What the application does
 
- This program is a Boolean logic interpreter that can evaluate simple expressions, for example:
+This program is a Boolean logic interpreter that can evaluate simple expressions, for example:
+
+![Code Editor](images/Boolean%20logic%20interpreter.JPG)
+
+![Result Page](images/Boolean%20logic%20result.JPG)
 
 **OR** 
 
@@ -83,16 +87,39 @@ if they match it returns true otherwise it will return false
 Operator precedence is implemented through order of function calls
 The first function to be called is the `evaluate_with_equality_check`. This 
 
-## Technologies you used
-1. Python - it is a coincise language easy to learn and has wide support
-2. Flask - It provides easy support ofr creating a webpage
-3. Docker & Docker Compose - Allows us to run the application quickly independent of OS
+## Technologies used
+1. [Python](https://www.python.org/) - it is a coincise language easy to learn and has wide support
+2. [Flask](https://flask.palletsprojects.com/en/2.2.x/) - A lightweight web framework
+3. [Docker & Docker Compose](https://docs.docker.com/engine/install/ubuntu/) - Allows us to run the application quickly independent of OS
+4. [Bootstrap css](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+5. [Code Mirror](https://codemirror.net/) - Provides beautiful code editor
    
 
-### How ro run
-1. Ensure docker is imstalled
+### How to run
+Pre-requisites
+1. A `git` client
+2. Docker or
+3. Python3
+   
+First clone the repo `git clone https://github.com/Lewanja/Pal-Developer23.git`
+
+Navigate to the `Boolean_logic_interpreter` directory via terminal i.e `cd Boolean_logic_interpreter`
+
+If using docker :
+1. Ensure docker is installed `docker --version` and is running `docker ps`
 2. Run `docker-compose up --build -d`
 3. Navigate to your browser and visit [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+
+Alternatively you can run directly using python
+1. Ensure you have [Python](https://www.python.org/) version 3.8 and above installed.
+2. Create a virtual environment `python3 -m venv .venv`
+3. Activate the virtual environment. In linux `.venv/bin/activate`
+4. Install required packages `pip install -r requirements.txt`
+5. Run the application `python3 flask_app.py`
+
+### Testing
+Unit and integration tests were done using the python `unittest` library
 
 ### Current limitations
 1. No supoort for complex expressions e.g. multiple brackets
@@ -101,4 +128,4 @@ The first function to be called is the `evaluate_with_equality_check`. This
 1. Make the UI more intuitive
 2. Support for more complex expressions e.g. multiple brackets
 
-## Include Credits
+## Credits

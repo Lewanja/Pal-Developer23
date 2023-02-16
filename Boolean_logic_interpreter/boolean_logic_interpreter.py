@@ -31,6 +31,8 @@ def equal_operator(a, b):
 
 def evaluate_with_brackets(s):
     """
+    This should be called second after variable substitution
+    it checks any brackets and solves those first before calling the evaluate function
     :param s: example s =(T ∨ F) = T
     :return: T = F
     """
@@ -70,38 +72,54 @@ def evaluate_with_equality_check(s):
 
 
 def evaluate(s):
-    # convert everything to uppercase
+    """
+    This function is always called last on the simplest forms of expressions
+    It deals directly with the operators and returns a single variable i.e. T or F
+    params:
+        s : the string to be evaluated
+    return result either of T or F
+    raises
+        InvalidOperatorException
+        InvalidSymbolException
+    """
+    # convert everything to uppercase and remove spaces
     s = s.upper()
+    s = s.replace(" ", '')
     # check if s is T or F and return it as is
     if s == 'T' or s == 'F':
         return s
-    # first evaluate simple boolean expressions
+    # first evaluate simple not expressions
     s = evaluate_booleans_and_substitute(s)
+
+    # Determine the operator and variables
     boolean_operators = {"∨": or_operator, "∧": and_operator, "¬": func_not, "=": equal_operator}
     boolean_variables = {"T": 1, "F": 0}
     arguments = []
-    s = s.replace(" ", '')
     s = list(s)
     operator = None
     for value in s:
         if value in boolean_variables:
             arguments.append(boolean_variables[value])
-            # print(f" {value} is in {boolean_variables}")
         elif value in boolean_operators:
             operator = boolean_operators[value]
-            # print(f" {value} is in {list(boolean_operators)}")
         else:
-            raise UnknownSymbolException(f"Symbol {value} is unkown. Please ensure all variables are assigned and only the symbols below used.")
+            raise UnknownSymbolException(f"Symbol {value} in {s} is unkown. "\
+                "Please ensure all variables are assigned and only the symbols below used.")
     if not operator:
         raise InvalidOperatorException
     result = operator(*arguments)
-    # print(f"The result for arguments is: {arguments}")
     return result
 
 
 class InvalidOperatorException(Exception):
+    """
+    Raised when an operator supplied is not part of the supported list
+    """
     pass
 
 
 class UnknownSymbolException(Exception):
+    """
+    Raised when a symbol is not part of the recognised list
+    """
     pass

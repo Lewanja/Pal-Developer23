@@ -23,6 +23,11 @@ def get_variables_in_line_of_code(s, variable_dict):
 
 
 def evaluate_with_variables(code_block):
+    """
+    Checks multi line input for any occurance of let and substitutes this further down the line with the actual value
+    It then calls the evaluate with brackets function to solve the expression.
+    Ideally this should always be the first to be called
+    """
     combined_variable_dict = {}
     all_lines_of_code = code_block.split("\n")
 
@@ -55,16 +60,3 @@ def evaluate_with_variables(code_block):
         return evaluate_results[0]
     else:
         return " ".join(evaluate_results)
-
-
-
-code_block = """
-let X = F
-let Y = ¬X
-let Z = T
-(¬X ∧ Y)∨Z = F
-"""
-
-s = evaluate_with_variables(code_block)
-print(s)
-
